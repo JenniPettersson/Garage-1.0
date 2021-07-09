@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Garage_1._0
 {
-    class IUI
+    class UI
     {
 
     }
+
 }

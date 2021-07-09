@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace Garage_1._0
 {
-    class Garage<T> : IEnumerable<T>
+    public class Garage<T> : IEnumerable<T>
     {
         public int Capacity  { get; set; }
-
-        public Garage(int capacity)
-        {
-            Capacity = capacity;
-        }
 
         public IEnumerator<T> GetEnumerator()
         {
