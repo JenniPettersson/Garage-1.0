@@ -7,18 +7,76 @@ using System.Threading.Tasks;
 
 namespace Garage_1._0
 {
-    public class Garage<T> : IEnumerable<T>
+    public class Garage<T> : IEnumerable<T> where T: IVehicle
     {
-        public int Capacity  { get; set; }
+        private T[] vehicles;
+
+        public int Capacity  { get; private set; }
+
+        public Garage(int capacity)
+        {
+            Capacity = capacity;
+            vehicles = new T[capacity];
+        }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            foreach (var vehicle in vehicles)
+            {
+                //Add nullcheck
+                yield return vehicle;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
+        }
+
+        internal void Park(T newVehicle)
+        {
+            for (int i = 0; i < Capacity; i++)
+            {
+                if (vehicles[i] != null)
+                {
+                    vehicles[i] = newVehicle;
+                    break;
+                }
+            }
+        }
+
+        internal void RemoveVehicle(string regNo)
+        {
+            for (int i = 0; i < Capacity; i++)
+            {
+                if (vehicles[i] != null)
+                {
+                    var temp = (IVehicle)vehicles[i];
+
+                    if (temp.RegNo == regNo)
+                    {
+                        vehicles[i] = default(T);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void Print()
+        {
+            for (int i = 0; i < Capacity; i++)
+            {
+                if (vehicles[i] != null)
+                {
+                    Console.WriteLine($"Vehicle {vehicles[i]} is {vehicles[i]} with registration number {vehicles[i].RegNo}");
+                    break;
+                }
+            }
+        }
+
+        private static void SearchRegNo()
+        {
+            
         }
     }
 }
