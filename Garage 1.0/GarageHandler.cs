@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Garage_1._0
 {
-    class GarageHandler
+    public class GarageHandler
     {
         private Garage<IVehicle> garage;
 
@@ -17,25 +17,27 @@ namespace Garage_1._0
             garage = new Garage<IVehicle>(capacity);
         }
         
-        public Garage<IVehicle> CreateGarage(int capacity)
-        {
-            var garage = new Garage<IVehicle>(capacity);
-            return garage;
-        }
-
         public void PrintVehicles()
         {
             garage.Print();
         }
 
-        public void AddVehicle(IVehicle newVehicle)
+        public bool AddVehicle(IVehicle newVehicle)
         {
-            garage.Park(newVehicle);
+            if (garage.Park(newVehicle))
+            {
+                return true;
+            }
+            return false;
         }
 
-        public void RemoveVehicle(string regNo)
+        public bool RemoveVehicle(string regNo)
         {
-            garage.Unpark(regNo);
+            if (garage.Unpark(regNo))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

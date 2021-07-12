@@ -10,7 +10,7 @@ namespace Garage_1._0
     public class Garage<T> : IEnumerable<T> where T: IVehicle
     {
         private T[] vehicles;
-        private int capacity;
+        //private int capacity;
 
         public int Capacity { get;  private set; }
 
@@ -39,19 +39,20 @@ namespace Garage_1._0
             return GetEnumerator();
         }
 
-        internal void Park(T newVehicle)
+        internal bool Park(T newVehicle)
         {
             for (int i = 0; i < Capacity; i++)
             {
                 if (vehicles[i] != null)
                 {
                     vehicles[i] = newVehicle;
-                    break;
+                    return true;
                 }
             }
+            return false;
         }
 
-        internal void Unpark(string regNo)
+        internal bool Unpark(string regNo)
         {
             for (int i = 0; i < Capacity; i++)
             {
@@ -62,10 +63,11 @@ namespace Garage_1._0
                     if (temp.RegNo == regNo)
                     {
                         vehicles[i] = default(T);
-                        break;
+                        return true;
                     }
                 }
             }
+            return false;
         }
 
         internal void Print()
