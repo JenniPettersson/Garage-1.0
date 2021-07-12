@@ -51,9 +51,18 @@ namespace Garage_1._0
 
         private static void EmptyGarage()
         {
+            int Capacity;
             CapacityOfGarage();
-            
+            CreateGarage(Capacity);
             SubMenu();
+        }
+
+        public static void CreateGarage(int capacity)
+        {
+            var garagehandler = new GarageHandler(capacity);
+            //var garage = new Garage<IVehicle>();
+            garagehandler.CreateGarage(capacity);
+            Console.WriteLine($"Garage was created with {capacity} parking slots.");
         }
 
         internal static int CapacityOfGarage()
@@ -81,10 +90,6 @@ namespace Garage_1._0
                 else if (isTrue && (Capacity > 0 || Capacity < 100))
                 {
                     Console.WriteLine("Capacity is " + Capacity);
-                    Console.WriteLine("Press any key to continue");
-                    Console.ReadKey();
-                    
-                    Console.WriteLine($"Garage was created with {Capacity} parking slots.");
                     return Capacity;
                 }
 
@@ -97,10 +102,23 @@ namespace Garage_1._0
             }
         }
 
-        private static void PopulatedGarage()
+        public static void PopulatedGarage()
         {
-            Console.WriteLine("Here is your populated garage\n\n");
-            Console.WriteLine();
+            var garagehandler = new GarageHandler(15);
+            //var garage = new Garage<IVehicle>();
+            garagehandler.CreateGarage(15);
+
+            IVehicle newVehicle1 = new Car("jen345", "Volvo", "red", "Diesel");
+            garagehandler.AddVehicle(newVehicle1);
+            IVehicle newVehicle2 = new Bus("bro754", "Scania", "Grey", 80);
+            garagehandler.AddVehicle(newVehicle2);
+            IVehicle newVehicle3 = new Motorcycle("far386", "Ducati", "Black", 1400);
+            garagehandler.AddVehicle(newVehicle3);
+            IVehicle newVehicle4 = new Boat("cos462", "Nimbus", "White", 18);
+            garagehandler.AddVehicle(newVehicle4);
+            IVehicle newVehicle5 = new Airplane("sas462", "Boeing", "White", 4);
+            garagehandler.AddVehicle(newVehicle5);
+            garagehandler.PrintVehicles();
             SubMenu();
         }
 
@@ -133,10 +151,10 @@ namespace Garage_1._0
                 switch (optSub)
                 {
                     case '1':
-                        UserInputToCreateVehicle();
+                        CreateVehicle();
                         break;
                     case '2':
-                        UserInputToRemoveVehicle();
+                        RemoveVehicle();
                         break;
                     case '3':
                         PrintProps();
@@ -155,38 +173,38 @@ namespace Garage_1._0
                         break;
                 }
             }
-
-            //if (!Exists(regNo.ToUpper())) 
-            //        IVehicle = new Car (regNo, make, color, numberOfWheels);
-            //        string result = Garage.Park(newVehicle as Vehicle) ? $"Vehicle {newVehicle} was parked in the garage";
         }
 
-        private static void PrintProps()
+        public static void PrintProps()
         {
             Console.WriteLine("The garage contains:\n");
-            
-            PrintVehicles();
+            garagehandler.PrintVehicles();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
 
-        private static void SearchRegNo()
+        private static string SearchRegNo()
         {
-            Console.WriteLine("Enter registration number would you like to search for (Example: ABC123):");
-            string searchRegNo = Console.ReadLine();
+            Console.WriteLine("Enter registration number would you like to search for (Example: abc123):");
+            string input = Console.ReadLine();
+            string searchRegNo = input.ToLower();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
+            return searchRegNo;
         }
 
-        private static void UserInputToRemoveVehicle()
+        public static void RemoveVehicle()
         {
-            Console.WriteLine("Enter registration number of the vehicle you'd like to remove (Example: ABC123):");
-            string removeRegNo = Console.ReadLine(); 
+            Console.WriteLine("Enter registration number of the vehicle you'd like to remove (Example: abc123):");
+            string input = Console.ReadLine();
+            string removeRegNo = input.ToLower();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
+            string result = garagehandler.RemoveVehicle(removeRegNo) ? $"The vehicle with registration number {removeRegNo} was removed from the garage" : $"The vehicle with registration number{removeRegNo} was not removed, try again";
+            Console.WriteLine(result);
         }
 
-        public static void UserInputToCreateVehicle()
+        public static void CreateVehicle()
         {
             Console.WriteLine("What type of vehicle would you like to create (Car, Bus, Motorcyle, Airplane, Boat)?");
             string userInput = Console.ReadLine();
@@ -215,21 +233,11 @@ namespace Garage_1._0
             return;
         }
 
-        //private static (string, string, string) CreateVehicle()
-        //{
-        //    Console.WriteLine("Please enter registration number (example ABC123):");
-        //    string regNo = Console.ReadLine();
-        //    Console.WriteLine("Please enter color:");
-        //    string color = Console.ReadLine();
-        //    Console.WriteLine("Please enter make (for example Volvo or Saab or other make):");
-        //    string make = Console.ReadLine();
-        //    return (regNo, color, make);
-        //}
-
-        private static IVehicle NewCar()
+        private static void NewCar()
         {
-            Console.WriteLine("Please enter registration number (example ABC123):");
-            string regNo = Console.ReadLine();
+            Console.WriteLine("Please enter registration number (example abc123):");
+            string userRegNo = Console.ReadLine();
+            string regNo = userRegNo.ToLower();
             Console.WriteLine("Please enter color:");
             string color = Console.ReadLine();
             Console.WriteLine("Please enter make (for example Volvo or Saab or other make):");
@@ -237,14 +245,15 @@ namespace Garage_1._0
             Console.WriteLine("Please enter fuel type (for example Gas or Diesel or Electricity or other fuel type):");
             string fuelType = Console.ReadLine();
             IVehicle newVehicle = new Car(regNo, make, color, fuelType);
-            string result = garage.AddVehicle(newVehicle as Vehicle);
-            return newVehicle;
+            string result = garagehandler.AddVehicle(newVehicle as Vehicle) ? $"Vehicle {newVehicle} was parked in the garage" : $"Vehicle {newVehicle} was not parked, try again";
+            Console.WriteLine(result);
         }
 
         private static object NewBus()
         {
-            Console.WriteLine("Please enter registration number (example ABC123):");
-            string regNo = Console.ReadLine();
+            Console.WriteLine("Please enter registration number (example abc123):");
+            string userRegNo = Console.ReadLine();
+            string regNo = userRegNo.ToLower();
             Console.WriteLine("Please enter color:");
             string color = Console.ReadLine();
             Console.WriteLine("Please enter make (for example Volvo or Saab or other make):");
@@ -258,8 +267,9 @@ namespace Garage_1._0
 
         private static object NewMotorcycle()
         {
-            Console.WriteLine("Please enter registration number (example ABC123):");
-            string regNo = Console.ReadLine();
+            Console.WriteLine("Please enter registration number (example abc123):");
+            string userRegNo = Console.ReadLine();
+            string regNo = userRegNo.ToLower();
             Console.WriteLine("Please enter color:");
             string color = Console.ReadLine();
             Console.WriteLine("Please enter make (for example Volvo or Saab or other make):");
@@ -273,8 +283,9 @@ namespace Garage_1._0
 
         private static object NewAirplane()
         {
-            Console.WriteLine("Please enter registration number (example ABC123):");
-            string regNo = Console.ReadLine();
+            Console.WriteLine("Please enter registration number (example abc123):");
+            string userRegNo = Console.ReadLine();
+            string regNo = userRegNo.ToLower();
             Console.WriteLine("Please enter color:");
             string color = Console.ReadLine();
             Console.WriteLine("Please enter make (for example Volvo or Saab or other make):");
@@ -288,8 +299,9 @@ namespace Garage_1._0
 
         private static object NewBoat()
         {
-            Console.WriteLine("Please enter registration number (example ABC123):");
-            string regNo = Console.ReadLine();
+            Console.WriteLine("Please enter registration number (example abc123):");
+            string userRegNo = Console.ReadLine();
+            string regNo = userRegNo.ToLower();
             Console.WriteLine("Please enter color:");
             string color = Console.ReadLine();
             Console.WriteLine("Please enter make (for example Volvo or Saab or other make):");
@@ -308,4 +320,8 @@ namespace Garage_1._0
             Console.ReadKey();
         }
     }
+
+    //if (!Exists(regNo.ToUpper())) 
+    //        IVehicle = new Car (regNo, make, color, numberOfWheels);
+    //        string result = Garage.Park(newVehicle as Vehicle) ? $"Vehicle {newVehicle} was parked in the garage";
 }

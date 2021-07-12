@@ -68,7 +68,7 @@ namespace Garage_1._0
             }
         }
 
-        public void Print()
+        internal void Print()
         {
             for (int i = 0; i < Capacity; i++)
             {
@@ -82,9 +82,18 @@ namespace Garage_1._0
             }
         }
 
-        public static void SearchRegNo()
+        internal void SearchRegNo(string searchRegNo)
         {
-            
+            for (int i = 0; i < Capacity; i++)
+            {
+                var temp = (IVehicle)vehicles[i];
+
+                if (searchRegNo == vehicles[i].RegNo)
+                {
+                    Console.WriteLine(temp.Props());
+                    break;
+                }
+            }
         }
     }
 }

@@ -16,6 +16,12 @@ namespace Garage_1._0
         {
             garage = new Garage<IVehicle>(capacity);
         }
+        
+        public Garage<IVehicle> CreateGarage(int capacity)
+        {
+            var garage = new Garage<IVehicle>(capacity);
+            return garage;
+        }
 
         public void PrintVehicles()
         {
@@ -31,8 +37,6 @@ namespace Garage_1._0
         {
             garage.Unpark(regNo);
         }
-
-
     }
 }
 
