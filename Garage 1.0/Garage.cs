@@ -51,7 +51,7 @@ namespace Garage_1._0
             }
         }
 
-        internal void RemoveVehicle(string regNo)
+        internal void Unpark(string regNo)
         {
             for (int i = 0; i < Capacity; i++)
             {
@@ -72,9 +72,11 @@ namespace Garage_1._0
         {
             for (int i = 0; i < Capacity; i++)
             {
+                var temp = (IVehicle)vehicles[i];
+
                 if (vehicles[i] != null)
                 {
-                    Console.WriteLine(vehicles.Props());
+                    Console.WriteLine(temp.Props());
                     break;
                 }
             }

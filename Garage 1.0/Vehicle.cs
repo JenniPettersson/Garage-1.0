@@ -29,6 +29,8 @@ namespace Garage_1._0
         public string Color { get; set; }
         public string Make { get; set; }
 
+        public string Props();
+
     }
 
     class Airplane : Vehicle, IVehicle

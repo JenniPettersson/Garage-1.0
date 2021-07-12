@@ -52,7 +52,7 @@ namespace Garage_1._0
         private static void EmptyGarage()
         {
             CapacityOfGarage();
-            GarageHandler.CreateGarage();
+            
             SubMenu();
         }
 
@@ -83,6 +83,7 @@ namespace Garage_1._0
                     Console.WriteLine("Capacity is " + Capacity);
                     Console.WriteLine("Press any key to continue");
                     Console.ReadKey();
+                    
                     Console.WriteLine($"Garage was created with {Capacity} parking slots.");
                     return Capacity;
                 }
@@ -163,7 +164,8 @@ namespace Garage_1._0
         private static void PrintProps()
         {
             Console.WriteLine("The garage contains:\n");
-            Print();
+            
+            PrintVehicles();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
@@ -224,7 +226,7 @@ namespace Garage_1._0
         //    return (regNo, color, make);
         //}
 
-        private static object NewCar()
+        private static IVehicle NewCar()
         {
             Console.WriteLine("Please enter registration number (example ABC123):");
             string regNo = Console.ReadLine();
@@ -235,9 +237,10 @@ namespace Garage_1._0
             Console.WriteLine("Please enter fuel type (for example Gas or Diesel or Electricity or other fuel type):");
             string fuelType = Console.ReadLine();
             IVehicle newVehicle = new Car(regNo, make, color, fuelType);
-            //string result = Garage.vehicles.Park(newVehicle as Vehicle) ? $"Vehicle {newVehicle} was parked in the garage" :;
+            string result = garage.AddVehicle(newVehicle as Vehicle);
             return newVehicle;
         }
+
         private static object NewBus()
         {
             Console.WriteLine("Please enter registration number (example ABC123):");
