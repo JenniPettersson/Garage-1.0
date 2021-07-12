@@ -98,9 +98,9 @@ namespace Garage_1._0
 
         private static void PopulatedGarage()
         {
-            Console.WriteLine("Here is your populated garage");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
+            Console.WriteLine("Here is your populated garage\n\n");
+            Console.WriteLine();
+            SubMenu();
         }
 
         internal static void SubMenu()
@@ -138,7 +138,7 @@ namespace Garage_1._0
                         UserInputToRemoveVehicle();
                         break;
                     case '3':
-                        Print();
+                        PrintProps();
                         break;
                     case '4':
                         SearchRegNo();
@@ -160,23 +160,26 @@ namespace Garage_1._0
             //        string result = Garage.Park(newVehicle as Vehicle) ? $"Vehicle {newVehicle} was parked in the garage";
         }
 
-        private static void SearchRegNo()
+        private static void PrintProps()
         {
-            Console.WriteLine("Here is your search by registration number");
+            Console.WriteLine("The garage contains:\n");
+            Print();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
 
-        private static void Print()
+        private static void SearchRegNo()
         {
-            Console.WriteLine("Here is your parked vehicles printed out in the console");
+            Console.WriteLine("Enter registration number would you like to search for (Example: ABC123):");
+            string searchRegNo = Console.ReadLine();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
 
         private static void UserInputToRemoveVehicle()
         {
-            Console.WriteLine("Here is your removal of vehicle by registration number");
+            Console.WriteLine("Enter registration number of the vehicle you'd like to remove (Example: ABC123):");
+            string removeRegNo = Console.ReadLine(); 
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }

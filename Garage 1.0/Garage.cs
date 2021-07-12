@@ -10,8 +10,14 @@ namespace Garage_1._0
     public class Garage<T> : IEnumerable<T> where T: IVehicle
     {
         private T[] vehicles;
+        private int capacity;
 
-        public int Capacity  { get; private set; }
+        public int Capacity { get;  private set; }
+
+        public Garage()
+        {
+
+        }
 
         public Garage(int capacity)
         {
@@ -68,13 +74,13 @@ namespace Garage_1._0
             {
                 if (vehicles[i] != null)
                 {
-                    Console.WriteLine($"Vehicle {vehicles[i]} is {vehicles[i]} with registration number {vehicles[i].RegNo}");
+                    Console.WriteLine(vehicles.Props());
                     break;
                 }
             }
         }
 
-        private static void SearchRegNo()
+        public static void SearchRegNo()
         {
             
         }

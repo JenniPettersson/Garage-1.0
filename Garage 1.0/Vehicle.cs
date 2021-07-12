@@ -18,6 +18,10 @@ namespace Garage_1._0
             Color = color;
             Make = make;
         }
+        public virtual string Props()
+        {
+            return $"Reg No: {RegNo}, Color: {Color}, Make: {Make}";
+        }
     }
         public interface IVehicle
     {
@@ -35,6 +39,11 @@ namespace Garage_1._0
         {
             NumberOfEngines = numberofengines;
         }
+
+        public override string Props()
+        {
+            return $"{base.Props()}, Engines: {NumberOfEngines}";
+        }
     }
 
     class Motorcycle : Vehicle, IVehicle
@@ -44,6 +53,11 @@ namespace Garage_1._0
         public Motorcycle(string regno, string color, string make, int cylindervolume) : base(regno, color, make)
         {
             CylinderVolume = cylindervolume;
+        }
+
+        public override string Props()
+        {
+            return $"{base.Props()}, Cylinder volume: {CylinderVolume}";
         }
     }
 
@@ -55,6 +69,10 @@ namespace Garage_1._0
         {
             FuelType = fueltype;
         }
+        public override string Props()
+        {
+            return $"{base.Props()}, Fuel type: {FuelType}";
+        }
     }
 
     class Bus : Vehicle, IVehicle
@@ -65,6 +83,11 @@ namespace Garage_1._0
         {
             NumberOfSeats = numberofseats;
         }
+
+        public override string Props()
+        {
+            return $"{base.Props()}, Seats: {NumberOfSeats}";
+        }
     }
 
     class Boat : Vehicle, IVehicle
@@ -73,6 +96,11 @@ namespace Garage_1._0
         public Boat(string regno, string color, string make, double lenght) : base(regno, color, make)
         {
             Lenght = lenght;
+        }
+
+        public override string Props()
+        {
+            return $"{base.Props()}, Lenght: {Lenght}";
         }
     }
 

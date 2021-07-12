@@ -5,17 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Garage_1._0
 {
     class GarageHandler
     {
-
-
-        internal static void CreateGarage()
-        {
-
-        }
-
-
+        
+        //public void SetCapacity(Array vehicles, int capacity)
+        //{
+        //    vehicles.Capacity = capacity;
+        //}
+        //public Array CreateGarage(int capacity)
+        //{
+        //    vehicles = new T[capacity];
+        //    return vehicles;
+        //}
     }
 }
