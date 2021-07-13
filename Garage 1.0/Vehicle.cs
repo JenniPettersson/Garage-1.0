@@ -11,6 +11,11 @@ namespace Garage_1._0
         public string RegNo { get; set; }
         public string Color { get; set; }
         public string Make { get; set; }
+        public string FuelType { get; set; }
+        public int NumberOfSeats { get; set; }
+        public double Lenght { get; set; }
+        public int NumberOfEngines { get; set; }
+        public int CylinderVolume { get; set; }
 
         public Vehicle(string regno, string color, string make)
         {
@@ -22,48 +27,29 @@ namespace Garage_1._0
         {
             return $"Reg No: {RegNo}, Color: {Color}, Make: {Make}";
         }
+
+        //public string PropsFull()
+        //{
+        //    return $"Reg No: {RegNo}, Color: {Color}, Make: {Make}, Fuel type: {FuelType}, Seats: {NumberOfSeats}, Lenght: {Lenght}, Engines: {NumberOfEngines}, Cylinder volume: {CylinderVolume};
+        //}
     }
         public interface IVehicle
     {
         public string RegNo { get; set; }
         public string Color { get; set; }
         public string Make { get; set; }
-
-        public string Props();
-
-    }
-
-    class Airplane : Vehicle, IVehicle
-    {
+        public string FuelType { get; set; }
+        public int NumberOfSeats { get; set; }
+        public double Lenght { get; set; }
         public int NumberOfEngines { get; set; }
-
-        public Airplane(string regno, string color, string make, int numberofengines) : base(regno, color, make)
-        {
-            NumberOfEngines = numberofengines;
-        }
-
-        public override string Props()
-        {
-            return $"{base.Props()}, Engines: {NumberOfEngines}";
-        }
-    }
-
-    class Motorcycle : Vehicle, IVehicle
-    {
         public int CylinderVolume { get; set; }
 
-        public Motorcycle(string regno, string color, string make, int cylindervolume) : base(regno, color, make)
-        {
-            CylinderVolume = cylindervolume;
-        }
+        public int Props();
 
-        public override string Props()
-        {
-            return $"{base.Props()}, Cylinder volume: {CylinderVolume}";
-        }
+        public int PropsFull();
     }
 
-    class Car : Vehicle, IVehicle
+    class Car : Vehicle
     {
     public string FuelType { get; set; }
 
@@ -77,7 +63,7 @@ namespace Garage_1._0
         }
     }
 
-    class Bus : Vehicle, IVehicle
+    class Bus : Vehicle
     {
         public int NumberOfSeats { get; set; }
 
@@ -92,7 +78,7 @@ namespace Garage_1._0
         }
     }
 
-    class Boat : Vehicle, IVehicle
+    class Boat : Vehicle
     {
         public double Lenght { get; set; }
         public Boat(string regno, string color, string make, double lenght) : base(regno, color, make)
@@ -106,4 +92,33 @@ namespace Garage_1._0
         }
     }
 
+    class Airplane : Vehicle
+    {
+        public int NumberOfEngines { get; set; }
+
+        public Airplane(string regno, string color, string make, int numberofengines) : base(regno, color, make)
+        {
+            NumberOfEngines = numberofengines;
+        }
+
+        public override string Props()
+        {
+            return $"{base.Props()}, Engines: {NumberOfEngines}";
+        }
+    }
+
+    class Motorcycle : Vehicle
+    {
+        public int CylinderVolume { get; set; }
+
+        public Motorcycle(string regno, string color, string make, int cylindervolume) : base(regno, color, make)
+        {
+            CylinderVolume = cylindervolume;
+        }
+
+        public override string Props()
+        {
+            return $"{base.Props()}, Cylinder volume: {CylinderVolume}";
+        }
+    }
 }

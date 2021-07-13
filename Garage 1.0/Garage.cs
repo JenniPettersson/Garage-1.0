@@ -10,7 +10,6 @@ namespace Garage_1._0
     public class Garage<T> : IEnumerable<T> where T: IVehicle
     {
         private T[] vehicles;
-        //private int capacity;
 
         public int Capacity { get;  private set; }
 
@@ -43,7 +42,7 @@ namespace Garage_1._0
         {
             for (int i = 0; i < Capacity; i++)
             {
-                if (vehicles[i] != null)
+                if (vehicles[i] == null)
                 {
                     vehicles[i] = newVehicle;
                     return true;
@@ -79,7 +78,6 @@ namespace Garage_1._0
                 if (vehicles[i] != null)
                 {
                     Console.WriteLine(temp.Props());
-                    break;
                 }
             }
         }
