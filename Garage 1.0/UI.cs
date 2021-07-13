@@ -364,17 +364,163 @@ namespace Garage_1._0
 
         public void SearchVehicleProperties()
         {
+            //string[] searchChoices = new string[] { "regNo", "color", "make", "fuelType", "numberOfSeats", "lenght", "numberOfEngines", "cylinderVolume" };
             Console.WriteLine("Would you like to search for registration number? (Y/N)");
-            string input = Console.ReadLine();
-            if ((input == "Y" || input == "y" || input == "Yes" || input == "yes") && input != null)
+            string userRegNo = Console.ReadLine();
+            if ((userRegNo == "Y" || userRegNo == "y" || userRegNo == "Yes" || userRegNo == "yes") && userRegNo != null)
             {
                 Console.WriteLine("Please enter registration number (Example: ABC123):");
-                string registrationNo = Console.ReadLine();
-
+                string unalteredRegNo = Console.ReadLine();
+                string regNo = unalteredRegNo.ToLower();
+            }
+            else if ((userRegNo == "N" || userRegNo == "n" || userRegNo == "No" || userRegNo == "no") && userRegNo != null)
+            {
+                Console.WriteLine("Ok, no search for registration number");
             }
 
+            else
+            {
+                Console.WriteLine("No allowed choice detected, continuing");
+            }
+
+            //foreach (var s in searchChoices)
+            //{
+            //    Console.WriteLine($"Would you like to search for {s}? (Y/N)");
+            //    string input = Console.ReadLine();
+            //    if ((input == "Y" || input == "y" || input == "Yes" || input == "yes") && input != null)
+            //    {
+            //        Console.WriteLine($"Please enter {s}:");
+            //        string this.s = Console.ReadLine();
+            //    }
+            //    else ((input == "N" || input == "n" || input == "No" || input == "no") && input != null)
+            //    {
+            //        Console.WriteLine($"Ok, no search for {s}");
+            //    }
+            //}
+
+            Console.WriteLine("Would you like to search for color? (Y/N)");
+            string userChoiceColor = Console.ReadLine();
+            if ((userChoiceColor == "Y" || userChoiceColor == "y" || userChoiceColor == "Yes" || userChoiceColor == "yes") && userChoiceColor != null)
+            {
+                Console.WriteLine("Please enter color (Example: Yellow):");
+                string color = Console.ReadLine();
+            }
+            else if ((userChoiceColor == "N" || userChoiceColor == "n" || userChoiceColor == "No" || userChoiceColor == "no") && userChoiceColor != null)
+            {
+                Console.WriteLine("Ok, no search for color");
+            }
+
+            else
+            {
+                Console.WriteLine("No allowed choice detected, continuing");
+            }
+
+            Console.WriteLine("Would you like to search for make? (Y/N)");
+            string userChoiceMake = Console.ReadLine();
+            if ((userChoiceMake == "Y" || userChoiceMake == "y" || userChoiceMake == "Yes" || userChoiceMake == "yes") && userChoiceMake != null)
+            {
+                Console.WriteLine("Please enter make (Example: Volvo):");
+                string make = Console.ReadLine();
+            }
+            else if ((userChoiceMake == "N" || userChoiceMake == "n" || userChoiceMake == "No" || userChoiceMake == "no") && userChoiceMake != null)
+            {
+                Console.WriteLine("Ok, no search for make");
+            }
+
+            else
+            {
+                Console.WriteLine("No allowed choice detected, continuing");
+            }
+
+            Console.WriteLine("Would you like to search for fuel type? (Y/N)");
+            string userChoiceFuelType = Console.ReadLine();
+            if ((userChoiceMake == "Y" || userChoiceMake == "y" || userChoiceMake == "Yes" || userChoiceMake == "yes") && userChoiceMake != null)
+            {
+                Console.WriteLine("Please enter Fuel Type (Example: Gas):");
+                string fuelType = Console.ReadLine();
+            }
+            else if ((userChoiceFuelType == "N" || userChoiceFuelType == "n" || userChoiceFuelType == "No" || userChoiceFuelType == "no") && userChoiceFuelType != null)
+            {
+                Console.WriteLine("Ok, no search for fuel type");
+            }
+
+            else
+            {
+                Console.WriteLine("No allowed choice detected, continuing");
+            }
+
+            Console.WriteLine("Would you like to search for number of seats? (Y/N)");
+            string userChoiceNumberOfSeats = Console.ReadLine();
+            if ((userChoiceNumberOfSeats == "Y" || userChoiceNumberOfSeats == "y" || userChoiceNumberOfSeats == "Yes" || userChoiceNumberOfSeats == "yes") && userChoiceNumberOfSeats != null)
+            {
+                Console.WriteLine("Please enter number of seats (Example: 4):");
+                int numberOfSeats = Console.ReadLine();
+            }
+            else if ((userChoiceNumberOfSeats == "N" || userChoiceNumberOfSeats == "n" || userChoiceNumberOfSeats == "No" || userChoiceNumberOfSeats == "no") && userChoiceNumberOfSeats != null)
+            {
+                Console.WriteLine("Ok, no search for number of seats");
+            }
+
+            else
+            {
+                Console.WriteLine("No allowed choice detected, continuing");
+            }
+
+            Console.WriteLine("Would you like to search for lenght? (Y/N)");
+            string userChoiceLenght = Console.ReadLine();
+            if ((userChoiceLenght == "Y" || userChoiceLenght == "y" || userChoiceLenght == "Yes" || userChoiceLenght == "yes") && userChoiceLenght != null)
+            {
+                Console.WriteLine("Please enter lenght (Example: 5):");
+                int lenght = Console.ReadLine();
+            }
+            else if ((userChoiceLenght == "N" || userChoiceLenght == "n" || userChoiceLenght == "No" || userChoiceLenght == "no") && userChoiceLenght != null)
+            {
+                Console.WriteLine("Ok, no search for lenght");
+            }
+
+            else
+            {
+                Console.WriteLine("No allowed choice detected, continuing");
+            }
+
+            Console.WriteLine("Would you like to search for number of engines? (Y/N)");
+            string userChoiceNumberOfEngines = Console.ReadLine();
+            if ((userChoiceNumberOfEngines == "Y" || userChoiceNumberOfEngines == "y" || userChoiceNumberOfEngines == "Yes" || userChoiceNumberOfEngines == "yes") && userChoiceNumberOfEngines != null)
+            {
+                Console.WriteLine("Please enter number of engines (Example: 2):");
+                int numberOfEngines = Console.ReadLine();
+            }
+            else if ((userChoiceNumberOfEngines == "N" || userChoiceNumberOfEngines == "n" || userChoiceNumberOfEngines == "No" || userChoiceNumberOfEngines == "no") && userChoiceNumberOfEngines != null)
+            {
+                Console.WriteLine("Ok, no search for number of engines");
+            }
+
+            else
+            {
+                Console.WriteLine("No allowed choice detected, continuing");
+            }
+
+            Console.WriteLine("Would you like to search cylinder volume? (Y/N)");
+            string userChoiceCylinderVolume = Console.ReadLine();
+            if ((userChoiceCylinderVolume == "Y" || userChoiceCylinderVolume == "y" || userChoiceCylinderVolume == "Yes" || userChoiceCylinderVolume == "yes") && userChoiceCylinderVolume != null)
+            {
+                Console.WriteLine("Please enter cylinder volume (Example: 14):");
+                int cylinderVolume = Console.ReadLine();
+            }
+            else if ((userChoiceCylinderVolume == "N" || userChoiceCylinderVolume == "n" || userChoiceCylinderVolume == "No" || userChoiceCylinderVolume == "no") && userChoiceCylinderVolume != null)
+            {
+                Console.WriteLine("Ok, no search for cylinder volume");
+            }
+
+            else
+            {
+                Console.WriteLine("No allowed choice detected, continuing");
+            }
+
+            garagehandler.Search();
+
             Console.WriteLine("Press any key to continue");
-            
+            Console.ReadKey();
         }
     }
 

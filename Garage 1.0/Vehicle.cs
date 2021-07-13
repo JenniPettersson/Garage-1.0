@@ -45,8 +45,6 @@ namespace Garage_1._0
         public int CylinderVolume { get; set; }
 
         public int Props();
-
-        public int PropsFull();
     }
 
     class Car : Vehicle
