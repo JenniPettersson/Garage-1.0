@@ -40,19 +40,6 @@ namespace Garage_1._0
             return false;
         }
 
-        //void TaBort()
-        //{
-        //    var _regNr = "";
-        //    var _color = "";
-        //    var _make = "";
-        //    var _fuelType = "";
-        //    int _numberOfSeats = 0;
-        //    int _lenght = 0;
-        //    int _numberOfEngines = 0;
-        //    int _cylinderVolume = 0;
-        //    Search(regNo: _regNr, color: _color, make: _make, fuelType: _fuelType, numberOfSeats: _numberOfSeats, lenght: _lenght, numberOfEngines: _numberOfEngines, cylinderVolume: _cylinderVolume);
-        //}
-
         public void Search(string regNo = "", string color = "", string make = "", string fuelType = "", int numberOfSeats = 0, double lenght = 0, int numberOfEngines = 0, int cylinderVolume = 0)
         {
 
@@ -104,3 +91,19 @@ namespace Garage_1._0
     }
 }
 
+
+
+
+
+//void TaBort()
+//{
+//    var _regNr = "";
+//    var _color = "";
+//    var _make = "";
+//    var _fuelType = "";
+//    int _numberOfSeats = 0;
+//    int _lenght = 0;
+//    int _numberOfEngines = 0;
+//    int _cylinderVolume = 0;
+//    Search(regNo: _regNr, color: _color, make: _make, fuelType: _fuelType, numberOfSeats: _numberOfSeats, lenght: _lenght, numberOfEngines: _numberOfEngines, cylinderVolume: _cylinderVolume);
+//}

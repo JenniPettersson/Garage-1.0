@@ -10,12 +10,11 @@ namespace Garage_1._0
     {
         public GarageHandler garagehandler;
 
-        public UI()
-        {
-           //var garagehandler = new GarageHandler(capacity);
-        }
+        //public UI()
+        //{
+        //   var garagehandler = new GarageHandler(capacity);
+        //}
 
-        //garagehandler = new GarageHandler(capacity);
         public void MainMenu()
         {
             while (true)
@@ -537,8 +536,11 @@ namespace Garage_1._0
             Console.ReadKey();
         }
     }
-
-    //if (!Exists(regNo.ToUpper())) 
-    //        IVehicle = new Car (regNo, make, color, numberOfWheels);
-    //        string result = Garage.Park(newVehicle as Vehicle) ? $"Vehicle {newVehicle} was parked in the garage";
 }
+
+
+
+
+//if (!Exists(regNo.ToUpper())) 
+//        IVehicle = new Car (regNo, make, color, numberOfWheels);
+//        string result = Garage.Park(newVehicle as Vehicle) ? $"Vehicle {newVehicle} was parked in the garage";
