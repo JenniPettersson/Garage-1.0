@@ -122,6 +122,7 @@ namespace Garage_1._0
             garagehandler.AddVehicle(newVehicle4);
             IVehicle newVehicle5 = new Airplane("sas462", "Boeing", "White", 4);
             garagehandler.AddVehicle(newVehicle5);
+            Console.WriteLine($"Garage was created with 15 parking slots and 5 vehicles");
             garagehandler.PrintVehicles();
             
             Console.WriteLine("Press any key to continue");
@@ -142,7 +143,7 @@ namespace Garage_1._0
                     + "\n[ 3 ] List vehicles in garage"
                     + "\n[ 4 ] Search for vehicle by registration number plate"
                     + "\n[ 5 ] Search using vehicle properties"
-                    + "\n[ 6 ] Main menu (you lose your current garage)"
+                    + "\n[ 6 ] Main menu (you lose your current garage if you have started to build and populate one)"
                     + "\n[ 0 ] Exit the application");
                 Console.Write("\r\nSelect an option: ");
 
@@ -195,14 +196,14 @@ namespace Garage_1._0
             Console.ReadKey();
         }
 
-        public string SearchRegNo()
+        public void SearchRegNo()
         {
             Console.WriteLine("Enter registration number would you like to search for (Example: abc123):");
             string input = Console.ReadLine();
-            string searchRegNo = input.ToLower();
+            string regNo = input.ToLower();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            return searchRegNo;
+            garagehandler.Search(regNo);
         }
 
         public void RemoveVehicle()
@@ -364,6 +365,15 @@ namespace Garage_1._0
 
         public void SearchVehicleProperties()
         {
+            string regNo = "";
+            string color = "";
+            string make = "";
+            string fuelType = "";
+            int numberOfSeats = 0;
+            double lenght = 0;
+            int numberOfEngines = 0;
+            int cylinderVolume = 0;
+
             //string[] searchChoices = new string[] { "regNo", "color", "make", "fuelType", "numberOfSeats", "lenght", "numberOfEngines", "cylinderVolume" };
             Console.WriteLine("Would you like to search for registration number? (Y/N)");
             string userRegNo = Console.ReadLine();
@@ -371,7 +381,7 @@ namespace Garage_1._0
             {
                 Console.WriteLine("Please enter registration number (Example: ABC123):");
                 string unalteredRegNo = Console.ReadLine();
-                string regNo = unalteredRegNo.ToLower();
+                regNo = unalteredRegNo.ToLower();
             }
             else if ((userRegNo == "N" || userRegNo == "n" || userRegNo == "No" || userRegNo == "no") && userRegNo != null)
             {
@@ -403,7 +413,7 @@ namespace Garage_1._0
             if ((userChoiceColor == "Y" || userChoiceColor == "y" || userChoiceColor == "Yes" || userChoiceColor == "yes") && userChoiceColor != null)
             {
                 Console.WriteLine("Please enter color (Example: Yellow):");
-                string color = Console.ReadLine();
+                color = Console.ReadLine();
             }
             else if ((userChoiceColor == "N" || userChoiceColor == "n" || userChoiceColor == "No" || userChoiceColor == "no") && userChoiceColor != null)
             {
@@ -420,7 +430,7 @@ namespace Garage_1._0
             if ((userChoiceMake == "Y" || userChoiceMake == "y" || userChoiceMake == "Yes" || userChoiceMake == "yes") && userChoiceMake != null)
             {
                 Console.WriteLine("Please enter make (Example: Volvo):");
-                string make = Console.ReadLine();
+                make = Console.ReadLine();
             }
             else if ((userChoiceMake == "N" || userChoiceMake == "n" || userChoiceMake == "No" || userChoiceMake == "no") && userChoiceMake != null)
             {
@@ -437,7 +447,7 @@ namespace Garage_1._0
             if ((userChoiceMake == "Y" || userChoiceMake == "y" || userChoiceMake == "Yes" || userChoiceMake == "yes") && userChoiceMake != null)
             {
                 Console.WriteLine("Please enter Fuel Type (Example: Gas):");
-                string fuelType = Console.ReadLine();
+                fuelType = Console.ReadLine();
             }
             else if ((userChoiceFuelType == "N" || userChoiceFuelType == "n" || userChoiceFuelType == "No" || userChoiceFuelType == "no") && userChoiceFuelType != null)
             {
@@ -454,7 +464,8 @@ namespace Garage_1._0
             if ((userChoiceNumberOfSeats == "Y" || userChoiceNumberOfSeats == "y" || userChoiceNumberOfSeats == "Yes" || userChoiceNumberOfSeats == "yes") && userChoiceNumberOfSeats != null)
             {
                 Console.WriteLine("Please enter number of seats (Example: 4):");
-                int numberOfSeats = Console.ReadLine();
+                string input = Console.ReadLine();
+                bool isTrue = int.TryParse(input, out numberOfSeats);
             }
             else if ((userChoiceNumberOfSeats == "N" || userChoiceNumberOfSeats == "n" || userChoiceNumberOfSeats == "No" || userChoiceNumberOfSeats == "no") && userChoiceNumberOfSeats != null)
             {
@@ -471,7 +482,8 @@ namespace Garage_1._0
             if ((userChoiceLenght == "Y" || userChoiceLenght == "y" || userChoiceLenght == "Yes" || userChoiceLenght == "yes") && userChoiceLenght != null)
             {
                 Console.WriteLine("Please enter lenght (Example: 5):");
-                int lenght = Console.ReadLine();
+                string input = Console.ReadLine();
+                bool isTrue = double.TryParse(input, out lenght);
             }
             else if ((userChoiceLenght == "N" || userChoiceLenght == "n" || userChoiceLenght == "No" || userChoiceLenght == "no") && userChoiceLenght != null)
             {
@@ -488,7 +500,8 @@ namespace Garage_1._0
             if ((userChoiceNumberOfEngines == "Y" || userChoiceNumberOfEngines == "y" || userChoiceNumberOfEngines == "Yes" || userChoiceNumberOfEngines == "yes") && userChoiceNumberOfEngines != null)
             {
                 Console.WriteLine("Please enter number of engines (Example: 2):");
-                int numberOfEngines = Console.ReadLine();
+                string input = Console.ReadLine();
+                bool isTrue = int.TryParse(input, out numberOfEngines);
             }
             else if ((userChoiceNumberOfEngines == "N" || userChoiceNumberOfEngines == "n" || userChoiceNumberOfEngines == "No" || userChoiceNumberOfEngines == "no") && userChoiceNumberOfEngines != null)
             {
@@ -505,7 +518,8 @@ namespace Garage_1._0
             if ((userChoiceCylinderVolume == "Y" || userChoiceCylinderVolume == "y" || userChoiceCylinderVolume == "Yes" || userChoiceCylinderVolume == "yes") && userChoiceCylinderVolume != null)
             {
                 Console.WriteLine("Please enter cylinder volume (Example: 14):");
-                int cylinderVolume = Console.ReadLine();
+                string input = Console.ReadLine();
+                bool isTrue = int.TryParse(input, out cylinderVolume);
             }
             else if ((userChoiceCylinderVolume == "N" || userChoiceCylinderVolume == "n" || userChoiceCylinderVolume == "No" || userChoiceCylinderVolume == "no") && userChoiceCylinderVolume != null)
             {
@@ -517,7 +531,7 @@ namespace Garage_1._0
                 Console.WriteLine("No allowed choice detected, continuing");
             }
 
-            garagehandler.Search();
+            garagehandler.Search(regNo, color, make, fuelType, numberOfSeats, lenght, numberOfEngines, cylinderVolume);
 
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();

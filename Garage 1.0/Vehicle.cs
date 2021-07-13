@@ -33,7 +33,7 @@ namespace Garage_1._0
         //    return $"Reg No: {RegNo}, Color: {Color}, Make: {Make}, Fuel type: {FuelType}, Seats: {NumberOfSeats}, Lenght: {Lenght}, Engines: {NumberOfEngines}, Cylinder volume: {CylinderVolume};
         //}
     }
-        public interface IVehicle
+    public interface IVehicle
     {
         public string RegNo { get; set; }
         public string Color { get; set; }
@@ -44,14 +44,14 @@ namespace Garage_1._0
         public int NumberOfEngines { get; set; }
         public int CylinderVolume { get; set; }
 
-        public int Props();
+        public string Props();
     }
 
     class Car : Vehicle
     {
-    public string FuelType { get; set; }
+        public string FuelType { get; set; }
 
-    public Car(string regno, string color, string make, string fueltype) : base(regno, color, make)
+        public Car(string regno, string color, string make, string fueltype) : base(regno, color, make)
         {
             FuelType = fueltype;
         }
